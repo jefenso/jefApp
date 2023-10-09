@@ -32,7 +32,7 @@ namespace jefApp.Controllers
                 {
                     um.AddUserAccount(user);
                     // FormsAuthentication.SetAuthCookie(user.FirstName, false);
-                    return RedirectToAction("", "Index");
+                    return RedirectToAction("", "Home");
                 }
                 else
                     ModelState.AddModelError("", "Login Name already taken.");
