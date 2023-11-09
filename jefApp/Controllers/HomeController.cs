@@ -17,6 +17,10 @@ namespace jefApp.Controllers
         {
             return View();
         }
+        public IActionResult UnAuthorized()
+        {
+            return View();
+        }
 
         public IActionResult Privacy()
         {

@@ -2,19 +2,16 @@
 
 namespace jefApp.Models.DB
 {
-    public class Users
+    public class Role
     {
         [Key]
-        public int ProfileID { get; set; }
-        public int UserID { get; set; }
-        
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Gender { get; set; }
+        public int RoleID { get; set; }
+        public string RoleName { get; set; }
+        public string RoleDescription { get; set; }
         public int CreatedBy { get; set; }
         public DateTime CreatedDateTime { get; set; }
         public int ModifiedBy { get; set; }
         public DateTime ModifiedDateTime { get; set; }
-        public string AccountImage { get; set; }
     }
 }
+

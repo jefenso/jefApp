@@ -3,7 +3,7 @@
     ViewBag.Title = "Users";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h1>Users List</h1>
+<h1>Self Profile</h1>
 <div id="userListContainer">
     <span class="alert-success">@ViewBag.Message</span>
     <table class="table table-striped table-condensed table-hover">
@@ -33,7 +33,7 @@
                     <td>@Html.DisplayFor(m => i.LastName)</td>
                     <td>@Html.DisplayFor(m => i.Gender)</td>
                     <td>@Html.DisplayFor(m => i.RoleName)</td>
-                    <td><a href="#" class="lnkEdit" data-userid="@i.UserID" data-login="@i.LoginName" data-firstname="@i.FirstName" data-lastname="@i.LastName" data-gender="@i.Gender" data-role="@i.RoleID">Edit</a></td>
+                    <td><a href="#" class="lnkEdit" data-userid="@i.UserID" data-login="@i.LoginName" data-password="@i.Password" data-firstname="@i.FirstName" data-lastname="@i.LastName" data-gender="@i.Gender" data-role="@i.RoleID">Edit</a></td>
                 </tr>
             }
         </tbody>
@@ -76,20 +76,25 @@
                         <input type="text" class="form-control" id="editLastName">
                     </div>
                     <div class="form-group">
+                        <label for="editRole">Role:</label>
+                        <select class="form-control" id="editRole" disabled>
+                            <option value="1">Administrator</option>
+                            <option value="2">Member</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label for="editGender">Gender:</label>
                         <select class="form-control" id="editGender">
                             <option value="M">Male</option>
                             <option value="F">Female</option>
                             <option value="O">Other</option>
                         </select>
-                    </div>
                     <div class="form-group">
-                        <label for="editRole">Role:</label>
-                        <select class="form-control" id="editRole">
-                            <option value="1">Administrator</option>
-                            <option value="2">Member</option>
-                        </select>
+                        <label for="editPassword">Password:</label>
+                            <input type="text" class="form-control" id="editPassword">
                     </div>
+                    </div>
+                    
                 </form>
             </div>
             <div class="modal-footer">
@@ -111,6 +116,7 @@
         var editFirstName = $("#editFirstName");
         var editLastName = $("#editLastName");
         var editGender = $("#editGender");
+        var editPassword = $("#editPassword");
         var editRole = $("#editRole");
 
         // Click event for "Edit" links
@@ -120,6 +126,7 @@
             var firstName = $(this).data("firstname");
             var lastName = $(this).data("lastname");
             var gender = $(this).data("gender");
+            var password = $(this).data("password");
             var role = $(this).data("role");
 
             // Populate the modal with user data
@@ -128,6 +135,7 @@
             editFirstName.val(firstName);
             editLastName.val(lastName);
             editGender.val(gender);
+            editPassword.val(password);
             editRole.val(role);
 
             // Show the modal
@@ -143,6 +151,7 @@
                 FirstName: editFirstName.val(),
                 LastName: editLastName.val(),
                 Gender: editGender.val(),
+                Password: editPassword.val(),
                 RoleID: editRole.val()
             };
 
